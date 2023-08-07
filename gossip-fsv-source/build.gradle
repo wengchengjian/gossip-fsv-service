@@ -1,0 +1,10 @@
+apply plugin: 'java'
+
+group = 'com.wcj.fsv.source'
+version = "0.0.1.SNAPSHOT"
+description = 'gossip-fsv-source'
+
+dependencies {
+
+}
+

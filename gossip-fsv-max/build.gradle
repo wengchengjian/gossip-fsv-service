@@ -1,0 +1,14 @@
+apply plugin: 'java-library'
+
+
+group = 'com.wcj.fsv.max'
+version = "0.0.1.SNAPSHOT"
+description = 'gossip-fsv-max'
+
+dependencies {
+    implementation project(':gossip-fsv-core')
+    implementation project(':gossip-fsv-plugin:gossip-plugin-minio')
+    implementation project(':gossip-fsv-source')
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+}
+

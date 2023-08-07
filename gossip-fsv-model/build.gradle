@@ -1,0 +1,13 @@
+apply plugin: 'java-library'
+
+group = 'com.wcj.fsv.model'
+version = "0.0.1.SNAPSHOT"
+description = 'gossip-fsv-model'
+
+dependencies {
+    api 'org.springframework.boot:spring-boot-starter-data-jpa'
+    api 'com.baomidou:mybatis-plus-boot-starter'
+    api 'jakarta.validation:jakarta.validation-api'
+
+}
+

@@ -1,0 +1,11 @@
+apply plugin: 'java-library'
+
+
+group = 'com.wcj.fsv.core'
+version = "0.0.1.SNAPSHOT"
+description = 'gossip-fsv-core'
+
+dependencies {
+    api project(":gossip-fsv-common")
+}
+

@@ -1,0 +1,36 @@
+plugins {
+    id 'groovy'
+    id 'maven-publish'
+}
+
+group 'com.wcj.blog'
+version '1.0.0'
+
+repositories {
+    mavenLocal()
+    maven { url 'https://maven.aliyun.com/repository/public' }
+    maven { url 'https://maven.aliyun.com/nexus/content/groups/public' }
+    maven { url 'https://maven.aliyun.com/nexus/content/repositories/google' }
+    maven { url 'https://maven.aliyun.com/nexus/content/repositories/jcenter' }
+    mavenCentral()
+}
+
+dependencies {
+    implementation("org.hidetake:gradle-ssh-plugin:2.2.0") {
+        exclude module: 'groovy-all'
+    }
+    implementation('org.hidetake:groovy-ssh:2.2.0')
+
+}
+
+test {
+    useJUnitPlatform()
+}
+
+sourceSets {
+    main {
+        groovy {
+            srcDir 'src/main/groovy'
+        }
+    }
+}

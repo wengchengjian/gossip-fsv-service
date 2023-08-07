@@ -1,0 +1,13 @@
+rootProject.name = 'gossip-fsv-service'
+include 'gossip-fsv-starter'
+include 'gossip-fsv-core'
+include 'gossip-fsv-common'
+include 'gossip-fsv-model'
+include 'gossip-fsv-source'
+include 'gossip-fsv-interface'
+include 'gossip-fsv-utils'
+include 'gossip-fsv-max'
+include 'gossip-fsv-plugin'
+include 'gossip-fsv-plugin:gossip-plugin-minio'
+findProject(':gossip-fsv-plugin:gossip-plugin-minio')?.name = 'gossip-plugin-minio'
+

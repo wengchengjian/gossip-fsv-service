@@ -1,0 +1,14 @@
+apply plugin: 'java-library'
+
+
+group = 'com.wcj.fsv.plugin.minio'
+version = "0.0.1.SNAPSHOT"
+description = 'gossip-plugin-minio'
+
+dependencies {
+    api 'io.minio:minio'
+    api "com.amazonaws:aws-java-sdk-s3"
+    api project(":gossip-fsv-model")
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+}
