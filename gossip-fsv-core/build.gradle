@@ -7,5 +7,17 @@ description = 'gossip-fsv-core'
 
 dependencies {
     api project(":gossip-fsv-common")
+    api 'cn.dev33:sa-token-spring-boot3-starter'
+    api 'com.h2database:h2'
+
 }
 
+//extraJavaModuleInfo {
+//    failOnMissingModuleInfo = false
+////        automaticModule('cn.dev33:sa-token-spring-boot3-starter', 'sa.token.boot.starter')
+//
+//    automaticModule('cn.dev33:sa-token-core', 'sa.token.core') {
+//        mergeJar("cn.dev33:sa-token-spring-boot3-starter")
+//    }
+//    automaticModule('cn.dev33:sa-token-servlet', 'sa.token.servlet')
+//}

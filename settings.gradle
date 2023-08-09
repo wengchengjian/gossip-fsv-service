@@ -7,7 +7,6 @@ include 'gossip-fsv-source'
 include 'gossip-fsv-interface'
 include 'gossip-fsv-utils'
 include 'gossip-fsv-max'
-include 'gossip-fsv-plugin'
 include 'gossip-fsv-plugin:gossip-plugin-minio'
 findProject(':gossip-fsv-plugin:gossip-plugin-minio')?.name = 'gossip-plugin-minio'
 

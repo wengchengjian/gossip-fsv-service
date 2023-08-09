@@ -1,0 +1,6 @@
+{
+  "/api/fsv/user/logout": {
+    "permits": "*",
+    "roles": "user"
+  }
+}

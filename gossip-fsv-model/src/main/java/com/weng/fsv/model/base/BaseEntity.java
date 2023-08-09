@@ -12,7 +12,6 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -20,13 +19,13 @@ import java.time.LocalDateTime;
 
 /**
  * @author wengchengjian
+ * @date 2023/8/9-11:19
  */
 @Data
 @MappedSuperclass
 public class BaseEntity implements Serializable {
-
     @Serial
-    private static final long serialVersionUID = -868372705865286486L;
+    private static final long serialVersionUID = -868372705835286486L;
 
     @Id
     @TableId(type = IdType.ASSIGN_ID)
@@ -50,16 +49,9 @@ public class BaseEntity implements Serializable {
     @TableField(value = "update_by", fill = FieldFill.INSERT_UPDATE)
     protected String updateBy;
 
-    @TableLogic
-    @Min(value = 0, message = "逻辑删除字段最小为0")
-    @JsonIgnore
-    @Column(columnDefinition = "bigint default 0 comment '逻辑删除'")
-    protected Long deleted;
-
     @Version
     @Min(value = 0, message = "版本号字段最小为0")
     @JsonIgnore
     @Column(columnDefinition = "int default 0 comment '版本号'")
     protected Integer version;
-
 }

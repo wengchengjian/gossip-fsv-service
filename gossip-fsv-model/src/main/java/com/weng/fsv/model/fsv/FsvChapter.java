@@ -1,7 +1,7 @@
 package com.weng.fsv.model.fsv;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.weng.fsv.model.base.BaseEntity;
+import com.weng.fsv.model.base.BaseLogicEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OrderBy;
 import jakarta.persistence.Table;
@@ -21,7 +21,7 @@ import lombok.*;
 @Entity
 @TableName("fsv_chapter")
 @Table(name = "fsv_chapter")
-public class FsvChapter extends BaseEntity {
+public class FsvChapter extends BaseLogicEntity {
 
     /**
      * 所属fsvId

@@ -4,10 +4,17 @@ group = 'com.wcj.fsv.common'
 version = "0.0.1.SNAPSHOT"
 description = 'gossip-fsv-common'
 
+
+
 dependencies {
     api project(":gossip-fsv-model")
     api project(":gossip-fsv-utils")
     api 'com.baomidou:mybatis-plus-boot-starter'
     api 'org.springframework:spring-context'
+    api 'com.github.penggle:kaptcha'
+    api 'org.springframework.boot:spring-boot-starter-validation'
 }
-
+//extraJavaModuleInfo {
+//    failOnMissingModuleInfo = false
+//    automaticModule('com.github.penggle:kaptcha', 'kaptcha')
+//}

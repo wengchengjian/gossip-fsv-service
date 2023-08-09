@@ -19,6 +19,7 @@ dependencies {
     implementation("org.hidetake:gradle-ssh-plugin:2.2.0") {
         exclude module: 'groovy-all'
     }
+    implementation("org.ow2.asm:asm:9.5")
     implementation('org.hidetake:groovy-ssh:2.2.0')
 
 }
@@ -31,6 +32,9 @@ sourceSets {
     main {
         groovy {
             srcDir 'src/main/groovy'
+        }
+        java {
+            srcDir 'src/main/java'
         }
     }
 }

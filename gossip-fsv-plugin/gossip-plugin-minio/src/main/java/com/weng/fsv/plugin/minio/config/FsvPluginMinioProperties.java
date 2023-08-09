@@ -11,11 +11,11 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConfigurationProperties(prefix = "minio")
 public class FsvPluginMinioProperties {
-    private String endpoint;
+    private String endpoint = "127.0.0.1:9001";
 
-    private String accessKey;
+    private String accessKey = "minioadmin";
 
-    private String secretKey;
+    private String secretKey = "minioadmin";
 
-    private String bucketName;
+    private String bucketName = "fsv_resource";
 }

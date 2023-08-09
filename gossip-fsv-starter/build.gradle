@@ -1,4 +1,5 @@
 apply plugin: 'java'
+apply plugin: 'application'
 
 group = 'com.wcj.fsv.starter'
 version = "0.0.1.SNAPSHOT"
@@ -6,7 +7,21 @@ description = 'gossip-fsv-starter'
 
 dependencies {
     implementation project(":gossip-fsv-max")
+    implementation project(":gossip-fsv-model")
+    implementation project(":gossip-fsv-core")
+    implementation project(":gossip-fsv-model")
+    implementation project(":gossip-fsv-interface")
+    implementation project(":gossip-fsv-utils")
+    implementation project(":gossip-fsv-common")
 }
 jar.enabled = false
 /* 需要org.springframework.boot插件 不需要打包成可执行的jar*/
 bootJar.enabled = true
+
+application {
+    mainModule = 'gossip.fsv.service.starter' // name defined in module-info.java
+    mainClass = "com.weng.fsv.starter.GossipFsvStarterApplication"
+    applicationName = "gossip-fsv-starter"
+    applicationDefaultJvmArgs = ['--add-opens java.base/java.lang=spring.core',
+                                 '--add-opens java.base/java.lang.reflect=spring.core'  ]
+}

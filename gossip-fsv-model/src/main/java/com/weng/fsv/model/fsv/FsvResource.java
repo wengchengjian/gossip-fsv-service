@@ -1,7 +1,7 @@
 package com.weng.fsv.model.fsv;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.weng.fsv.model.base.BaseEntity;
+import com.weng.fsv.model.base.BaseLogicEntity;
 import com.weng.fsv.model.enums.FsvType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @TableName("fsv_resource")
 @Table(name = "fsv_resource")
-public class FsvResource extends BaseEntity {
+public class FsvResource extends BaseLogicEntity {
     /**
      * 标题
      */

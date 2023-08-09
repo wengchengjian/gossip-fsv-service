@@ -13,6 +13,7 @@ buildscript {
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
         classpath('com.bmuschko:gradle-docker-plugin:6.4.0')
+//        classpath("org.gradlex:extra-java-module-info:1.4.1")
     }
 }
 
@@ -24,10 +25,11 @@ plugins {
 //    id 'org.graalvm.buildtools.native' version '0.9.18'
     id 'idea'
     id 'checkstyle'
-
+//    id "org.gradlex.extra-java-module-info" version "1.4.1"
 }
 
-mainClassName = 'com.wcj.blog.starter.GossipBlogServiceApplication'
+mainClassName = 'com.weng.fsv.starter.GossipFsvStarterApplication'
+
 
 allprojects {
 
@@ -37,8 +39,8 @@ allprojects {
 
     group = 'com.wcj.fsv'
     // jdk版本
-    sourceCompatibility = 17
-    targetCompatibility = 17
+    def sourceCompatibility = 17
+    def targetCompatibility = 17
 
     // 指定编码格式
     [compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
@@ -47,6 +49,7 @@ allprojects {
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
     apply plugin: 'idea'
+//    apply plugin: 'org.gradlex.extra-java-module-info'
 
     tasks.withType(JavaCompile) {
         options.encoding = "utf-8"
@@ -82,13 +85,25 @@ allprojects {
             dependency 'junit:junit:4.13.2'
             dependency 'mysql:mysql-connector-java:8.0.32'
             dependency 'org.projectlombok:lombok:1.18.24'
+            dependency 'com.github.penggle:kaptcha:2.3.2'
             dependency 'io.minio:minio:8.5.4'
-            dependency "com.amazonaws:aws-java-sdk-s3:1.12.270"
+            dependency "com.amazonaws:aws-java-sdk-s3:1.12.523"
+            dependency 'cn.dev33:sa-token-spring-boot3-starter:1.35.0.RC'
+            dependency 'com.h2database:h2:2.2.220'
+            dependency 'org.mapstruct:mapstruct:1.5.5.Final'
+            dependency 'org.mapstruct:mapstruct-processor:1.5.5.Final'
 
         }
     }
 
-    jar.enabled = true
+    jar {
+        enabled = true
+        manifest {
+            attributes("Implementation-Title": "Gradle")
+            attributes("Implementation-Version": version)
+            attributes("Java-Version": sourceCompatibility)
+        }
+    }
     /* 需要org.springframework.boot插件 不需要打包成可执行的jar*/
     bootJar.enabled = false
 
@@ -115,6 +130,12 @@ allprojects {
     test {
         useJUnitPlatform()
     }
+
+
+//    extraJavaModuleInfo {
+//        failOnMissingModuleInfo = false
+//
+//    }
 
 }
 

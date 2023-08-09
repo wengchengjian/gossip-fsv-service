@@ -1,4 +1,5 @@
-apply plugin: 'java'
+apply plugin: 'java-library'
+
 
 group = 'com.wcj.fsv.source'
 version = "0.0.1.SNAPSHOT"

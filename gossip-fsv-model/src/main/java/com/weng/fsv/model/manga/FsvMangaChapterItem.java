@@ -1,11 +1,10 @@
 package com.weng.fsv.model.manga;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.weng.fsv.model.base.BaseEntity;
+import com.weng.fsv.model.base.BaseLogicEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OrderBy;
 import jakarta.persistence.Table;
-import jakarta.persistence.UniqueConstraint;
 import lombok.*;
 
 /**
@@ -21,7 +20,7 @@ import lombok.*;
 @Entity
 @TableName("fsv_manga_chapter_item")
 @Table(name = "fsv_manga_chapter_item")
-public class FsvMangaChapterItem extends BaseEntity {
+public class FsvMangaChapterItem extends BaseLogicEntity {
 
     /**
      * 所属Chapter
