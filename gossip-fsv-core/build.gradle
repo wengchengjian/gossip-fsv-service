@@ -8,8 +8,7 @@ description = 'gossip-fsv-core'
 dependencies {
     api project(":gossip-fsv-common")
     api 'cn.dev33:sa-token-spring-boot3-starter'
-    api 'com.h2database:h2'
-
+    api 'com.mysql:mysql-connector-j'
 }
 
 //extraJavaModuleInfo {

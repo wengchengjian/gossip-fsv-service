@@ -1,14 +1,16 @@
-package com.weng.fsv.core.model.dto;
+package com.weng.fsv.model.user.dto;
 
 import lombok.Data;
 
 /**
  * @author wengchengjian
- * @date 2023/8/9-15:25
+ * @date 2023/8/10-15:20
  */
 @Data
-public class SaveUserDto {
-    private String username;
+public class EditUserDto {
+    private String oldPassword;
+
+    private String newPassword;
 
     private String nickname;
 
@@ -20,7 +22,6 @@ public class SaveUserDto {
 
     private String phone;
 
-    private String password;
-
     private String description;
+
 }

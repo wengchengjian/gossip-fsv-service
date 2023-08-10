@@ -1,13 +1,13 @@
 package com.weng.fsv.model.base;
 
 import com.baomidou.mybatisplus.annotation.*;
+import com.baomidou.mybatisplus.annotation.OrderBy;
+import com.baomidou.mybatisplus.annotation.Version;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.weng.fsv.model.group.UpdateGroup;
-import jakarta.persistence.Column;
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -29,6 +29,7 @@ public class BaseLogicEntity implements Serializable {
 
     @Id
     @TableId(type = IdType.ASSIGN_ID)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonSerialize(using = ToStringSerializer.class)
     @Positive(message = "主键id只能为正数")
     @NotNull(message = "更新时id不能为空", groups = {UpdateGroup.class})

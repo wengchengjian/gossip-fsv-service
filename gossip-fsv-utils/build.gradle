@@ -6,6 +6,9 @@ version = "0.0.1.SNAPSHOT"
 description = 'gossip-fsv-utils'
 
 dependencies {
-
+    api "jakarta.servlet:jakarta.servlet-api"
+    implementation "org.springframework.boot:spring-boot-starter-web"
+    implementation 'com.maxmind.geoip2:geoip2'
+    api "org.apache.httpcomponents:httpclient"
 }
 

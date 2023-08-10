@@ -145,23 +145,16 @@ public class MinioServiceImpl implements MinioService {
      */
     @Override
     public void download(String bucket, String fileName, HttpServletResponse res) {
-        try (S3ObjectInputStream response = minioClient.getObject(bucket, fileName).getObjectContent()) {
-            byte[] buf = new byte[1024];
+        try (S3ObjectInputStream fileStream = minioClient.getObject(bucket, fileName).getObjectContent()) {
+            byte[] buf = new byte[4096];
             int len;
-            try (FastByteArrayOutputStream os = new FastByteArrayOutputStream()) {
-                while ((len = response.read(buf)) != -1) {
-                    os.write(buf, 0, len);
-                }
-                os.flush();
-                byte[] bytes = os.toByteArray();
-                res.setCharacterEncoding("utf-8");
-                // 设置强制下载不打开
-                // res.setContentType("application/force-download");
-                res.addHeader("Content-Disposition", "attachment;fileName=" + fileName);
-                try (ServletOutputStream stream = res.getOutputStream()) {
-                    stream.write(bytes);
-                    stream.flush();
-                }
+            res.setCharacterEncoding("utf-8");
+            res.setContentLengthLong(fileStream.available());
+            // 设置强制下载不打开
+            // res.setContentType("application/force-download");
+            res.addHeader("Content-Disposition", "attachment;fileName=" + fileName);
+            try (ServletOutputStream out = res.getOutputStream()) {
+                fileStream.transferTo(out);
             }
         } catch (Exception e) {
             throw new RuntimeException("文件下载失败", e);

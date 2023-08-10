@@ -5,6 +5,7 @@ import com.weng.fsv.model.base.BaseLogicEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import lombok.*;
 
 /**
@@ -19,7 +20,7 @@ import lombok.*;
 @AllArgsConstructor
 @Entity
 @TableName("fsv_security_user")
-@Table(name = "fsv_security_user")
+@Table(name = "fsv_security_user", uniqueConstraints = @UniqueConstraint(columnNames = {"username", "deleted"}))
 public class FsvSecurityUser extends BaseLogicEntity {
 
     private String username;

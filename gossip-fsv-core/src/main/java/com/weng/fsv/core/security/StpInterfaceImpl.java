@@ -24,13 +24,13 @@ public class StpInterfaceImpl implements StpInterface {
 
     @Override
     public List<String> getPermissionList(Object loginId, String loginType) {
-        List<FsvSecurityPermission> permissionList = fsvUserService.getPermissionList((long) loginId);
+        List<FsvSecurityPermission> permissionList = fsvUserService.getPermissionList((String) loginId);
         return permissionList.stream().map(FsvSecurityPermission::getCode).toList();
     }
 
     @Override
     public List<String> getRoleList(Object loginId, String loginType) {
-        List<FsvSecurityRole> roleList = fsvUserService.getRoleList((long) loginId);
+        List<FsvSecurityRole> roleList = fsvUserService.getRoleList((String) loginId);
         return roleList.stream().map(FsvSecurityRole::getName).toList();
     }
 }

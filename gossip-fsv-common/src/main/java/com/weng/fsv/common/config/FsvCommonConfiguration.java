@@ -6,6 +6,8 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 /**
  * @author wengchengjian
@@ -14,6 +16,8 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 @Configuration
 @EntityScan("com.weng.fsv.model")
+@EnableJpaRepositories
+@EnableJpaAuditing
 @ComponentScan(basePackages = {"com.weng.fsv.common"})
 @EnableConfigurationProperties()
 public class FsvCommonConfiguration {

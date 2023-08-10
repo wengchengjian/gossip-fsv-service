@@ -92,6 +92,8 @@ allprojects {
             dependency 'com.h2database:h2:2.2.220'
             dependency 'org.mapstruct:mapstruct:1.5.5.Final'
             dependency 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+            dependency 'com.mysql:mysql-connector-j:8.1.0'
+            dependency 'com.maxmind.geoip2:geoip2:3.0.2'
 
         }
     }
@@ -117,6 +119,10 @@ allprojects {
         implementation 'org.springframework.boot:spring-boot-configuration-processor'
         annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
         annotationProcessor 'org.projectlombok:lombok'
+
+        implementation 'org.mapstruct:mapstruct-processor'
+        annotationProcessor 'org.mapstruct:mapstruct-processor'
+
         testImplementation 'org.projectlombok:lombok'
         testAnnotationProcessor 'org.projectlombok:lombok'
         implementation 'com.google.guava:guava'
