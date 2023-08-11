@@ -1,4 +1,15 @@
 server:
+  undertow:
+    buffer-size: 16384
+    direct-buffers: true
+    threads:
+      # 设置IO线程数, 它主要执行非阻塞的任务
+      io: 8
+      # 阻塞任务线程池, 当执行类似servlet请求阻塞操作, undertow会从这个线程池中取得线程,它的值设置取决于系统的负载
+      worker: 256
+    accesslog:
+      # 是否开启访问日志
+      enabled: true
   # 端口
   port: 8080
 ############## Sa-Token 配置 (文档: https://sa-token.cc) ##############

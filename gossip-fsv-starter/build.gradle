@@ -13,7 +13,13 @@ dependencies {
     implementation project(":gossip-fsv-interface")
     implementation project(":gossip-fsv-utils")
     implementation project(":gossip-fsv-common")
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-undertow
+    implementation 'org.springframework.boot:spring-boot-starter-undertow'
 }
+configurations.all {
+    exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+}
+
 jar.enabled = false
 /* 需要org.springframework.boot插件 不需要打包成可执行的jar*/
 bootJar.enabled = true
