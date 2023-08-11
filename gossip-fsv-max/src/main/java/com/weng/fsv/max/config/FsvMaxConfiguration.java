@@ -15,6 +15,6 @@ import org.springframework.context.annotation.Configuration;
 public class FsvMaxConfiguration {
     @PostConstruct
     public void init() {
-        log.info("fsv core module is loaded successful! ");
+        log.info("fsv max module is loaded successful! ");
     }
 }

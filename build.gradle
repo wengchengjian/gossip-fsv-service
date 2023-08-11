@@ -94,6 +94,7 @@ allprojects {
             dependency 'org.mapstruct:mapstruct-processor:1.5.5.Final'
             dependency 'com.mysql:mysql-connector-j:8.1.0'
             dependency 'com.maxmind.geoip2:geoip2:3.0.2'
+            dependency 'org.jodd:jodd-core:5.3.0'
 
         }
     }

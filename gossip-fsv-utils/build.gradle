@@ -10,5 +10,6 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-web"
     implementation 'com.maxmind.geoip2:geoip2'
     api "org.apache.httpcomponents:httpclient"
+    api 'org.jodd:jodd-core'
 }
 

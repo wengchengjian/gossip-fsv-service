@@ -13,6 +13,7 @@ dependencies {
     api 'org.springframework:spring-context'
     api 'com.github.penggle:kaptcha'
     api 'org.springframework.boot:spring-boot-starter-validation'
+    api 'p6spy:p6spy'
 }
 //extraJavaModuleInfo {
 //    failOnMissingModuleInfo = false

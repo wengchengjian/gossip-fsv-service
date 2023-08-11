@@ -21,7 +21,12 @@ public class FsvMetaObjectHandler implements MetaObjectHandler {
 
     @Override
     public void insertFill(MetaObject metaObject) {
-        String username = StpUtil.getLoginId("system");
+        String username = null;
+        try {
+            username = StpUtil.getLoginId("system");
+        }catch (Exception e) {
+            username = "system";
+        }
         this.strictInsertFill(metaObject, "createBy", String.class, username);
         this.strictInsertFill(metaObject, "updateBy", String.class, username);
         this.strictInsertFill(metaObject, "createTime", LocalDateTime::now, LocalDateTime.class);
@@ -34,8 +39,12 @@ public class FsvMetaObjectHandler implements MetaObjectHandler {
     public void updateFill(MetaObject metaObject) {
         metaObject.setValue("updateTime", null);
         metaObject.setValue("updateBy", null);
-        String username = StpUtil.getLoginId("system");
-
+        String username = null;
+        try {
+            username = StpUtil.getLoginId("system");
+        }catch (Exception e) {
+            username = "system";
+        }
         this.strictUpdateFill(metaObject, "updateTime", LocalDateTime::now, LocalDateTime.class);
         this.strictUpdateFill(metaObject, "updateBy", String.class, username);
     }

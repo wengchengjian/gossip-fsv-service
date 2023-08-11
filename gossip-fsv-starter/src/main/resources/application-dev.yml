@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    username: root
+    password: wcj520600
+    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+    url: jdbc:p6spy:mysql://localhost:3306/fsv_resource

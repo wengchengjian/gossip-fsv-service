@@ -14,6 +14,6 @@ public class FsvSaTokenListener extends SaTokenListenerForSimple {
     /** 每次登录时触发 */
     @Override
     public void doLogin(String loginType, Object loginId, String tokenValue, SaLoginModel loginModel) {
-        System.out.println("---------- 自定义侦听器实现 doLogin");
+//        System.out.println("---------- 自定义侦听器实现 doLogin");
     }
 }

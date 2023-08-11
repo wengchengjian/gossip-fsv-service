@@ -45,7 +45,7 @@ public class PageRequest {
     @Transient
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @TableField(exist = false)
-    protected LocalDateTime startTime = LocalDateTime.now().minus(7, ChronoUnit.DAYS);
+    protected LocalDateTime startTime = LocalDateTime.now().minusDays(7);
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @TableField(exist = false)
