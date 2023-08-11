@@ -41,6 +41,15 @@ spring:
         keep-alive: 60s
         queue-capacity: 500
         allow-core-thread-timeout: true
+  mail:
+    host: smtp.qq.com
+    port: 465
+    protocol: smtps
+    username: 473991883@qq.com
+    password: vqytvlyecfapcajj
+    properties:
+      mail.smtp.ssl.enable: true
+
 fsv:
   options:
     logging: true

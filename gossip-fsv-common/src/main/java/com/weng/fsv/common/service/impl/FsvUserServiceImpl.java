@@ -11,6 +11,7 @@ import com.weng.fsv.common.support.PasswordEncoder;
 import com.weng.fsv.model.base.Result;
 import com.weng.fsv.model.user.*;
 import com.weng.fsv.model.user.dto.EditUserDto;
+import com.weng.fsv.utils.ValidateCodeUtils;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -139,5 +140,34 @@ public class FsvUserServiceImpl extends ServiceImpl<FsvSecurityUserMapper, FsvSe
         }
 
         updateById(user);
+    }
+
+    @Override
+    public FsvSecurityUser autoRegisterByEmail(String email) {
+        FsvSecurityUser user = findByEmail(email);
+        if(user != null) {
+            return user;
+        }
+        FsvSecurityUser randomUser = generateUserByDefault();
+        randomUser.setEmail(email);
+        save(randomUser);
+        return randomUser;
+    }
+
+    @Override
+    public FsvSecurityUser findByEmail(String email) {
+        return this.baseMapper.selectOne(Wrappers.<FsvSecurityUser>lambdaQuery().eq(FsvSecurityUser::getEmail, email));
+    }
+
+    @Override
+    public FsvSecurityUser findByPhone(String phone) {
+        return this.baseMapper.selectOne(Wrappers.<FsvSecurityUser>lambdaQuery().eq(FsvSecurityUser::getPhone, phone));
+    }
+
+    private FsvSecurityUser generateUserByDefault() {
+        return FsvSecurityUser.builder()
+                .username(ValidateCodeUtils.generateValidateCode(8))
+                .nickname(ValidateCodeUtils.generateValidateCode(6))
+                .password(passwordEncoder.encode(ValidateCodeUtils.generateValidateCode(8))).build();
     }
 }

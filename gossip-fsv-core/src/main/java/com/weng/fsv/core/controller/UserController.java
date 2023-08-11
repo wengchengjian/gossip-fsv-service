@@ -12,6 +12,7 @@ import com.weng.fsv.common.service.FsvUserService;
 import com.weng.fsv.common.support.LoggingInterface;
 import com.weng.fsv.common.support.PasswordEncoder;
 import com.weng.fsv.core.mapstruct.UtilStruct;
+import com.weng.fsv.core.service.MailService;
 import com.weng.fsv.model.base.Result;
 import com.weng.fsv.model.user.FsvSecurityUser;
 import com.weng.fsv.model.user.dto.EditUserDto;
@@ -42,6 +43,26 @@ public class UserController implements LoggingInterface {
     @Resource
     private UtilStruct utilStruct;
 
+    @Resource
+    private MailService mailService;
+
+
+    @RequestMapping("/loginByMail")
+    public Result<SaTokenInfo> doLoginByMail(@RequestParam("email") String email, @RequestParam("code") String code) {
+        if(!mailService.verifyCode(email, code)) {
+            return Result.failure("验证码过期或者错误,请稍后再试!");
+        }
+        FsvSecurityUser user = fsvUserService.autoRegisterByEmail(email);
+        StpUtil.login(user.getUsername());
+        return Result.success(StpUtil.getTokenInfo());
+    }
+
+    @RequestMapping("/sendCodeMail")
+    public Result<Void> sendCodeMail(@RequestParam("email") String email) throws Exception {
+        mailService.sendCodeMail(email);
+        return Result.success();
+    }
+
 
     @RequestMapping("doLogin")
     public Result<SaTokenInfo> doLogin(String username, String password) throws AccountException {
@@ -59,7 +80,7 @@ public class UserController implements LoggingInterface {
         return Result.failure("登录失败");
     }
 
-    @PostMapping("/save")
+    @PostMapping("/register")
     public Result<SaTokenInfo> save(@RequestBody SaveUserDto saveUserDto) {
 
         if(!StringUtils.hasText(saveUserDto.getUsername())) {
@@ -67,7 +88,19 @@ public class UserController implements LoggingInterface {
         }
         FsvSecurityUser oldUser = fsvUserService.findByName(saveUserDto.getUsername());
         if(oldUser != null) {
-            throw new UserExistException(saveUserDto.getUsername());
+            return Result.failure("用户名已存在");
+        }
+        if(StringUtils.hasText(saveUserDto.getEmail())) {
+            oldUser = fsvUserService.findByEmail(saveUserDto.getEmail());
+            if(oldUser != null) {
+                return Result.failure("邮箱已注册");
+            }
+        }
+        if(StringUtils.hasText(saveUserDto.getPhone())) {
+            oldUser = fsvUserService.findByPhone(saveUserDto.getPhone());
+            if(oldUser != null) {
+                return Result.failure("手机号已注册");
+            }
         }
         FsvSecurityUser fsvSecurityUser = utilStruct.dto2User(saveUserDto);
         if(!StringUtils.hasText(fsvSecurityUser.getPassword())) {

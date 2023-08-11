@@ -9,6 +9,7 @@ dependencies {
     api project(":gossip-fsv-common")
     api 'cn.dev33:sa-token-spring-boot3-starter'
     api 'com.mysql:mysql-connector-j'
+    api 'org.springframework.boot:spring-boot-starter-mail'
 }
 
 //extraJavaModuleInfo {

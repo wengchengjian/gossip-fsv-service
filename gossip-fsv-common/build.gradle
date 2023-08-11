@@ -14,6 +14,8 @@ dependencies {
     api 'com.github.penggle:kaptcha'
     api 'org.springframework.boot:spring-boot-starter-validation'
     api 'p6spy:p6spy'
+    api 'com.github.ben-manes.caffeine:caffeine'
+
 }
 //extraJavaModuleInfo {
 //    failOnMissingModuleInfo = false

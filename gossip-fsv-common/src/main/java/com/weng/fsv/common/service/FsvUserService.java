@@ -56,4 +56,10 @@ public interface FsvUserService extends IService<FsvSecurityUser> {
     void removeWithRoleBatchByIds(List<Long> idList);
 
     void editUser(FsvSecurityUser oldUser, EditUserDto editUserDto);
+
+    FsvSecurityUser autoRegisterByEmail(String email);
+
+    FsvSecurityUser findByEmail(String email);
+
+    FsvSecurityUser findByPhone(String phone);
 }

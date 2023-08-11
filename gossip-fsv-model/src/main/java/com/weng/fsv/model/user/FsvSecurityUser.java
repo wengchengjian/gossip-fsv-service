@@ -20,7 +20,9 @@ import lombok.*;
 @AllArgsConstructor
 @Entity
 @TableName("fsv_security_user")
-@Table(name = "fsv_security_user", uniqueConstraints = @UniqueConstraint(columnNames = {"username", "deleted"}))
+@Table(name = "fsv_security_user", uniqueConstraints = {@UniqueConstraint(columnNames = {"username", "deleted"}),
+        @UniqueConstraint(columnNames = {"email", "deleted"}),
+        @UniqueConstraint(columnNames = {"phone", "deleted"})})
 public class FsvSecurityUser extends BaseLogicEntity {
 
     private String username;

@@ -73,6 +73,9 @@ allprojects {
             dependency 'commons-io:commons-io:2.11.0'
             // https://mvnrepository.com/artifact/cn.hutool/hutool-all
             dependency 'cn.hutool:hutool-all:5.8.11'
+            // https://mvnrepository.com/artifact/com.github.ben-manes.caffeine/caffeine
+            dependency 'com.github.ben-manes.caffeine:caffeine:3.1.8'
+
             // https://mvnrepository.com/artifact/com.alibaba.fastjson2/fastjson2
             dependency 'com.alibaba.fastjson2:fastjson2:2.0.23'
             dependency 'jakarta.validation:jakarta.validation-api:3.0.2'
