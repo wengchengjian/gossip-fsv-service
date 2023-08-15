@@ -1,14 +1,22 @@
 version: '3.9'
 services:
   redis:
-    image: redislabs/redismod
+    image: redis:latest
     restart: always
     container_name: redis
     volumes:
-      - ./redis/redis.conf:/etc/redis/redis.conf
+      - ./redis:/etc/redis
       - ./redis/data:/data
     ports:
       - "6379:6379"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 256M
+        reservations:
+          cpus: '0.25'
+          memory: 128m
     networks:
       - fsv-net
   mysql:
@@ -21,8 +29,18 @@ services:
       - ./init/mysql:/docker-entrypoint-initdb.d/
     environment:
       MYSQL_ROOT_PASSWORD: wcj520600
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 256M
+        reservations:
+          cpus: '0.25'
+          memory: 128m
     ports:
       - "3306:3306"
+    cpu_count: 2
+    mem_reservation: 218
     networks:
       - fsv-net
   minio:
@@ -45,6 +63,14 @@ services:
       interval: 30s
       timeout: 20s
       retries: 3
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 256M
+        reservations:
+          cpus: '0.25'
+          memory: 128m
     networks:
       - fsv-net
 networks:

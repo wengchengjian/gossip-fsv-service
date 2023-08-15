@@ -1,0 +1,1 @@
+export const DEFAULT_USER_AVATAR = 'https://avatars.githubusercontent.com/u/6481596?v=4&size=64'

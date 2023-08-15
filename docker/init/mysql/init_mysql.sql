@@ -1,1 +1,1 @@
-create database if not exists `gossip-fsv`;
+create database if not exists `fsv_resource`;
