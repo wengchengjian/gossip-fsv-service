@@ -49,9 +49,9 @@ const onSubmit = async () => {
         method: 'GET',
     })
 
-    let userInfo: FsvUser = result;
+    let newUserInfo: FsvUser = result;
 
-    setUserInfo(userInfo);
+    setUserInfo(newUserInfo);
     ElMessage({
         message: "登陆成功",
         type: 'success'

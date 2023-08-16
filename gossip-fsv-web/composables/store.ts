@@ -37,11 +37,12 @@ const handleResponseCode = (response: ApiResponse) => {
 
     let code = response.code;
     if (code !== 200) {
-        let msg = response.data.msg;
+        let msg = response.msg;
         ElMessage({
             message: msg,
             type: 'error'
         })
+        throw new Error(msg);
     }
 }
 
