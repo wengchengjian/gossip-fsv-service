@@ -1,12 +1,12 @@
 <template>
     <client-only>
         <Teleport to="body">
-            <el-dialog v-if="loginStore.loginViewFlag" v-model="loginStore.loginViewFlag" title="Fsv登陆" width="30%"
+            <el-dialog v-if="loginStore.loginViewFlag" v-model="loginStore.loginViewFlag" title="登陆" width="30%"
                 :before-close="loginStore.loginViewClose">
                 <LoginForm />
             </el-dialog>
-            <el-dialog v-if="registerStore.registerViewFlag" v-model="registerStore.registerViewFlag" title="Fsv注册"
-                width="30%" :before-close="registerStore.registerViewclose">
+            <el-dialog v-if="registerStore.registerViewFlag" v-model="registerStore.registerViewFlag" title="注册" width="30%"
+                :before-close="registerStore.registerViewclose">
                 <RegisterForm />
             </el-dialog>
         </Teleport>

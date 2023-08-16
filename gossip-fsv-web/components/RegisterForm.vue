@@ -1,5 +1,5 @@
 <template>
-    <el-form :model="registerForm" label-width="120px">
+    <el-form :model="registerForm" label-width="60px">
         <el-form-item label="用户名">
             <el-input v-model="registerForm.username" placeholder="请输入用户名"></el-input>
         </el-form-item>
@@ -17,7 +17,7 @@
         </el-form-item>
         <el-form-item>
             <el-button type="primary" @click="onSubmit">提交</el-button>
-            <el-button>取消</el-button>
+            <el-button @click="registerViewclose">取消</el-button>
         </el-form-item>
     </el-form>
 </template>
@@ -26,9 +26,9 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
 
-const { useLoginViewStore } = useStore();
+const { useRegisterViewStore } = useStore();
 
-const { loginViewFlag, loginViewOpen, loginViewClose } = useLoginViewStore();
+const { registerViewFlag, registerViewOpen, registerViewclose } = useRegisterViewStore();
 
 
 // do not use same name with ref
@@ -43,6 +43,7 @@ const registerForm = reactive({
 
 const onSubmit = () => {
     console.log('submit!')
+    registerViewclose();
 }
 
 </script>

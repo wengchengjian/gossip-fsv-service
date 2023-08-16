@@ -17,6 +17,7 @@ import com.weng.fsv.model.base.Result;
 import com.weng.fsv.model.user.FsvSecurityUser;
 import com.weng.fsv.model.user.dto.EditUserDto;
 import com.weng.fsv.model.user.dto.SaveUserDto;
+import com.weng.fsv.model.user.vo.FsvUserVo;
 import jakarta.annotation.Resource;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -75,6 +76,7 @@ public class UserController implements LoggingInterface {
 
         if(fsvUserService.matchPassword(password, user.getPassword())) {
             StpUtil.login(username);
+
             return Result.success(StpUtil.getTokenInfo());
         }
         return Result.failure("登录失败");
@@ -185,12 +187,37 @@ public class UserController implements LoggingInterface {
         return SaResult.error("二级认证失败");
     }
 
+    /**
+     * 获取当前登陆的用户信息
+     * @return 用户信息
+     */
+    @SaCheckLogin
+    @GetMapping("/getUserInfoBySelf")
+    public Result<FsvUserVo> getUserInfoBySelf() {
+        var userId = ((String) StpUtil.getLoginId());
+
+        var user = fsvUserService.findByName(userId);
+
+        var userVo = utilStruct.userToVo(user);
+
+        return Result.success(userVo);
+    };
+
     @SaCheckRole("admin")
     @PostMapping("/ban")
     public SaResult ban(String loginId) {
         StpUtil.kickout(loginId);
         StpUtil.disable(loginId, 86400);
         return SaResult.ok("封禁用户成功");
+    }
+
+    /**
+     * 注销账号
+     */
+    @SaCheckLogin
+    @GetMapping("/exit")
+    public void exit() {
+        StpUtil.logout();
     }
 
     private static final String MODULE = "user-manager";

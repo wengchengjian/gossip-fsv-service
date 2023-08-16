@@ -79,7 +79,6 @@ const backedShowMenuRootRoutes = computed(() => {
     })
 })
 
-console.log(backedRoutes.value)
 
 const handleSelect = (key: string, keyPath: string[]) => {
     let openRoute = backedRouteMap.value.get(key);

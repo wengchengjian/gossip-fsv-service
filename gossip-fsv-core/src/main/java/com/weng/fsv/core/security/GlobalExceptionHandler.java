@@ -1,6 +1,7 @@
 package com.weng.fsv.core.security;
 
 import cn.dev33.satoken.exception.DisableServiceException;
+import cn.dev33.satoken.exception.NotLoginException;
 import cn.dev33.satoken.util.SaResult;
 import com.weng.fsv.common.enums.LogLevelEnum;
 import com.weng.fsv.common.exception.UserExistException;
@@ -26,6 +27,12 @@ public class GlobalExceptionHandler implements LoggingInterface {
     public SaResult handlerException(Exception e) {
         log.error("{}", e);
         return SaResult.error(e.getMessage());
+    }
+
+    @ExceptionHandler(NotLoginException.class)
+    public SaResult handleNotLoginEx(NotLoginException e) {
+        log.error("{}", e);
+        return SaResult.error("用户未登录");
     }
 
     @ExceptionHandler

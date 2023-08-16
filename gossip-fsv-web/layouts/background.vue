@@ -7,7 +7,9 @@
             <TheBackgroundMenuTree />
         </el-col>
         <el-col :span="20">
-            <slot />
+            <div class="fsv-backed-content">
+                <slot />
+            </div>
         </el-col>
     </el-row>
     <el-row>
@@ -15,3 +17,11 @@
     </el-row>
     <TheLoginRegisterViewDialog />
 </template>
+
+<style scoped>
+.fsv-backed-content {
+    padding: 20px;
+    height: 100%;
+    background-color: #F5F6FA;
+}
+</style>
